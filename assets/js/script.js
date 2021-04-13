@@ -84,7 +84,7 @@ $(".list-group").on("blur", "textarea", function() {
   .addClass("m-1")
   .text(text);
   // replace textarea with p element 
-  $(this).replaceWith(taskp);
+  $(this).replaceWith(taskP);
 
 });
 
@@ -120,7 +120,12 @@ $(".list-group").on("blur", "input[type='text']", function() {
   var status = $(this)
   .closest(".list-group")
   .attr("id")
-  .replace("this-", "");
+  .replace("list-", "");
+
+  // get the task's position in the list of other li elements 
+  var index = $(this)
+  .closest(".list-group-item")
+  .index();
 
   // update task in array and re-save to localstorage
   tasks[status][index].date = date;
